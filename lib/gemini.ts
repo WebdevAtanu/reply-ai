@@ -10,33 +10,15 @@ export async function generateReply(message: string, mood: string) {
 
       Rules:
       - Proper email format
+      - Clear subject understanding
+      - Natural human tone
+      - Greeting
       - Keep each reply concise
       - Separate each reply with "---"
 
       Original Email:
       ${message}
       `;
-
-  // const prompt = `
-  //   You are an expert email assistant.
-
-  //   Tone: ${mood}
-
-  //   Generate 4 different email replies in a ${mood} tone.
-
-  //   Rules:
-  //   - Proper email format
-  //   - Clear subject understanding
-  //   - Natural human tone
-  //   - Greeting
-  //   - Body (short and clear)
-  //   - Closing line
-
-  //   Make it realistic and not robotic.
-
-  //   Original Email:
-  //   ${message}
-  //   `;
 
   const result = await model.generateContent(prompt);
   const text = result.response.text();

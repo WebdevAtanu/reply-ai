@@ -6,13 +6,16 @@ export async function POST(req: Request) {
     const { message, mood } = await req.json();
 
     if (!message) {
-      return NextResponse.json({ error: "Message is required" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Message is required" },
+        { status: 400 },
+      );
     }
 
     const reply = await generateReply(message, mood);
 
     return NextResponse.json({ reply });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: "Failed to generate" }, { status: 500 });
   }
 }
